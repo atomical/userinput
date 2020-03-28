@@ -195,7 +195,7 @@ func (ui *KeyEvent ) MonitorKeyboard(callback func(event Event)) {
           C.CGEventTapCallBack(C.CallbackHandler),
           nil)
 
-  loopsource := C.CFMachPortCreateRunLoopSource(nil, tap, 0)
+  loopsource := C.CFMachPortCreateRunLoopSource(C.kCFAllocatorDefault , tap, 0)
   loop := C.CFRunLoopGetCurrent()
   C.CFRunLoopAddSource(loop, loopsource, C.kCFRunLoopDefaultMode)
   C.CGEventTapEnable(tap, true)
